@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>पोतदार ज्वेलर्स</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #7b001c; color: #ffd700; }
+    header { background: #5a0014; padding: 1.5rem; text-align: center; }
+    header img { height: 80px; margin: 10px auto; display: block; }
+    nav p { font-size: 1.1rem; font-style: italic; color: #ffe680; }
+    main { padding: 2rem; max-width: 1200px; margin: auto; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .product-card { background: #4d0011; padding: 1rem; border-radius: 10px; text-align: center; }
+    .product-card img.main-img { width: 100%; border-radius: 5px; }
+    .product-card button { background-color: #ffd700; color: #7b001c; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-top: 1rem; font-weight: bold; }
+    .product-card button:hover { background-color: #e6be00; }
+    
+    /* Fullscreen modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      overflow-y: scroll;
+      padding: 20px;
+    }
+    .modal img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      max-width: 1080px;
+    }
+    .close-btn {
+      position: fixed;
+      top: 20px; right: 20px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 10000;
+    }
+    /* Contact & Reviews */
+    .contact, .testimonials {
+      padding: 2rem;
+      background: linear-gradient(145deg, #5a0014, #7b001c);
+      color: #ffd700;
+      border-radius: 10px;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+    .contact h2, .testimonials h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 0.5rem;
+    }
+    .contact p, .testimonials blockquote {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .contact a {
+      color: #ffe680;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    .testimonials blockquote {
+      border-left: 5px solid #ffd700;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 215, 0, 0.05);
+      border-radius: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>पोतदार ज्वेलर्स</h1>
+  <img src="l.jpg" alt="Logo">
+  <nav><p>शैलीही, शिस्तही आणि खर्चावर ताबाही - सर्व काही एकाच जागी !</p>
+</header>
+
+<main>
+  <section class="products">
+    <div class="product-card">
+     <img src="p.jpg" alt="पैंजण" class="main-img">
+      <h3>पैंजण</h3>
+      <button onclick="openGallery(['p1.jpg','p3.jpg','p2.jpg','p4.jpg','p5.jpg','p6.jpg','p7.jpg','p8.jpg','p9.jpg','p0.jpg','pq.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="j.jpg" alt="पैंजण" class="main-img">
+      <h3>जोडवी</h3>
+      <button onclick="openGallery(['j1.jpg','j2.jpg','j3.jpg','j4.jpg','j5.jpg','j6.jpg','j7.jpg','j8.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="b.jpg" alt="पैंजण" class="main-img">
+      <h3>ब्रासलेट व हातातले कडे</h3>
+      <button onclick="openGallery(['b1.jpg','b2.jpg','b3.jpg','b4.jpg','b5.jpg','b6.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="r.jpg" alt="पैंजण" class="main-img">
+      <h3>राखी</h3>
+      <button onclick="openGallery(['r1.jpg','r2.jpg','r4.jpg','r5.jpg','r6.jpg','r7.jpg','r8.jpg','r9.jpg','r0.jpg','r11.jpg','r22.jpg','r33.jpg','r44.jpg','r55.jpg','r66.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="c.jpg" alt="पैंजण" class="main-img">
+      <h3>चेन</h3>
+      <button onclick="openGallery(['c1.jpg','c2.jpg','c3.jpg','c4.jpg','c5.jpg','c6.jpg','c7.jpg','c8.jpg','c9.jpg','c0.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="a.jpg" alt="पैंजण" class="main-img">
+      <h3>अंगठी</h3>
+      <button onclick="openGallery(['a1.jpg','a2.jpg','a3.jpg','a4.jpg','a5.jpg','a6.jpg','a7.jpg','a8.jpg','a9.jpg','a0.jpg','aq.jpg','aw.jpg','ae.jpg','ar.jpg','at.jpg','ay.jpg','au.jpg','ai.jpg','ao.jpg','ap.jpg','aa.jpg','as.jpg','ad.jpg','af.jpg','ag.jpg','ah.jpg','aj.jpg','ak.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="n6.jpg" alt="पैंजण" class="main-img">
+      <h3>नथ</h3>
+      <button onclick="openGallery(['n1.jpg','n2.jpg','n3.jpg','n4.jpg','n6.jpg','n7.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="m.jpg" alt="पैंजण" class="main-img">
+      <h3>नाकातले</h3>
+      <button onclick="openGallery(['m1.jpg','m2.jpg','m3.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="q.jpg" alt="पैंजण" class="main-img">
+      <h3>बाली व रिंगा</h3>
+      <button onclick="openGallery(['q1.jpg','q2.jpg','q3.jpg','q4.jpg','q5.jpg','q6.jpg','q7.jpg','q8.jpg','q9.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="k3.jpg" alt="पैंजण" class="main-img">
+      <h3>कान चैन व वेल</h3>
+      <button onclick="openGallery(['k1.jpg','k2.jpg','k4.jpg','k5.jpg','k6.jpg','k7.jpg','k8.jpg','k9.jpg','k0.jpg','kq.jpg','kr.jpg','kt.jpg'])">अधिक फोटो पहा</button>
+    </div>
+     <div class="product-card">
+      <img src="z.jpg" alt="पैंजण" class="main-img">
+      <h3>झुमका व टॉप्स</h3>
+      <button onclick="openGallery(['z1.jpg','z2.jpg','z3.jpg','z4.jpg','z5.jpg','z6.jpg','z7.jpg','z8.jpg','z9.jpg','z0.jpg','zq.jpg','zw.jpg','ze.jpg','zr.jpg','zt.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="s.jpg" alt="पैंजण" class="main-img">
+      <h3>सुवर्ण वाटी व पेंडंट</h3>
+      <button onclick="openGallery(['s4.jpg','s5.jpg','sr.jpg','s1.jpg','s2.jpg','sw.jpg','s3.jpg','s6.jpg','s7.jpg','s8.jpg','s9.jpg','s0.jpg','sq.jpg','se.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="mmx.jpg" alt="पैंजण" class="main-img">
+      <h3>मंगळसूत्र</h3>
+      <button onclick="openGallery(['mm1.jpg','mm2.jpg','mm3.jpg','mm4.jpg','mm5.jpg','mm6.jpg','mm7.jpg','mm9.jpg','mm0.jpg','mmq.jpg','mmw.jpg','mme.jpg','mmr.jpg','mmt.jpg'])">अधिक फोटो पहा</button>
+    </div>
+    <div class="product-card">
+      <img src="nn.jpg" alt="जोडवे" class="main-img">
+      <h3>नेकलेस व गंठण</h3>
+      <button onclick="openGallery(['nn1.jpg','nn2.jpg','nn3.jpg','nn4.jpg','nn5.jpg','nn6.jpg','nn7.jpg','nn8.jpg','nn9.jpg','nn0.jpg','nnq.jpg','nnw.jpg','nne.jpg','nnr.jpg','nnt.jpg','nny.jpg','nnu.jpg','nni.jpg','nno.jpg','nnp.jpg','nna.jpg','nns.jpg','nnd.jpg','nnf.jpg','nng.jpg','nnh.jpg','nnj.jpg','nnk.jpg','nnl.jpg','nnz.jpg','nnx.jpg','nnc.jpg','nnv.jpg'])">अधिक फोटो पहा</button>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>📞 Contact Us</h2>
+    <p><strong>Phone:</strong> <a href="tel:+919923400299">+91 9923400299</a></p>
+    <p><strong>Email:</strong> <a href="mailto:santoshpotadar99@gmail.com">santoshpotadar99@gmail.com</a></p>
+    <p><strong>Address:</strong> Near- Namrata shop, Shegoan, Tal-Jath</p>
+  </section>
+
+  <section class="testimonials">
+    <h2>💬 Customer Reviews</h2>
+    <blockquote>माझ्या आयुष्यातील खास प्रसंगासाठी मी इथून घेतलेले दागिने अजूनही लोकांच्या कौतुकाचा विषय ठरतात. जर तुम्ही दर्जेदार आणि विश्वासार्ह दागिन्यांची शोधात असाल, तर पोतदार ज्वेलर्स एक परिपूर्ण ठिकाण आहे. - <strong>संगीता पोतदार डिग्रजकर</strong></blockquote>
+    <blockquote>मी पोतदार ज्वेलर्स मध्ये दागिन्यांची खरेदी केली आणि खरंच सांगतो, माझा अनुभव खूपच सुंदर होता. - <strong>बनाळी</strong></blockquote>
+    <blockquote>माझा पोतदार ज्वेलर्स येथे खरेदीचा अनुभव खूपच छान आणि समाधानकारक होता. - <strong>अज्ञात ग्राहक</strong></blockquote>
+  </section>
+</main>
+<h3> <mark>Developed by VJP TECHNOLOGY </mark></h3>
+<h3> <mark>Contact-9503739296</mark></h3>
+
+<!-- Fullscreen modal -->
+<div id="modal" class="modal">
+  <span class="close-btn" onclick="closeGallery()">✖</span>
+  <div id="modal-content"></div>
+</div>
+
+<script>
+  function openGallery(images) {
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modal-content");
+    modalContent.innerHTML = "";
+    images.forEach(src => {
+      let img = document.createElement("img");
+      img.src = src;
+      modalContent.appendChild(img);
+    });
+    modal.style.display = "block";
+  }
+  function closeGallery() {
+    document.getElementById("modal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
